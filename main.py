@@ -32,7 +32,6 @@ def args_check():
         sys.exit(1)
 
 def main():
-    # file_path = "./books/frankenstein.txt"
     args_check()
     file_path = args_check()
     analyze_book(file_path)
