@@ -1,3 +1,4 @@
+import sys
 from stats import get_num_words, get_char_count, sort_char_count
 
 def get_boot_text(file_path):
@@ -5,8 +6,7 @@ def get_boot_text(file_path):
         content = file.read()
         return content
 
-def main():
-    file_path = "./books/frankenstein.txt"
+def analyze_book(file_path):
     print(f"""============ BOOKBOT ============
 Analyzing book found at {file_path.removeprefix("./")}...""")
 
@@ -23,5 +23,18 @@ Found {num_words} total words""")
         if char.isalpha():
             print(f"{char}: {i["count"]}")
     print("============= END ===============")
+
+def args_check():
+    if len(sys.argv) == 2:
+        return(sys.argv[1])
+    else:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+
+def main():
+    # file_path = "./books/frankenstein.txt"
+    args_check()
+    file_path = args_check()
+    analyze_book(file_path)
 
 main()
